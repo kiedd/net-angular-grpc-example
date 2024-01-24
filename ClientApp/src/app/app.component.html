@@ -1,0 +1,25 @@
+<p>
+  This is root component
+</p>
+<div>User:<input type="text" [(ngModel)]="userName" /></div>
+<div><button (click)="onSend()">Send</button></div>
+<div>Response:</div>
+<div>{{ response$ | async }}</div>
+
+<div>
+  <h2>Users</h2>
+  <div>Create user</div>
+  <div>Name: <input type="text" [(ngModel)]="userName" /></div>
+  <div>Company: <input type="text" [(ngModel)]="userCompany" /></div>
+  <div><button (click)="createUser()">Create</button></div>
+
+  <div>Existing users:</div>
+  <div>
+    <div *ngFor="let user of usersResponse$ | async">
+      <div>--------------------</div>
+      <div>Name: {{ user.name }}</div>
+      <div>Company: {{ user.company }}</div>
+      <div>DateCreated: {{ user.dateCreated }}</div>
+    </div>
+  </div>
+</div>

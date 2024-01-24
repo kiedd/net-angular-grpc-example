@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPC.Web.Api";
+
+package user;
+import "google/protobuf/empty.proto";
+
+service UserApi {
+  rpc Create (CreateUserCommand) returns (google.protobuf.Empty);
+  rpc Get (google.protobuf.Empty) returns (UsersReply);
+}
+
+message CreateUserCommand {
+  string name = 1;
+  string company = 2;
+}
+
+message UsersReply {
+  repeated User users = 1;
+}
+
+message User {
+  string name = 1;
+  string company = 2;
+  string dateCreated = 3;
+}
